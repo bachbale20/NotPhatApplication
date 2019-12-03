@@ -1,0 +1,28 @@
+﻿@using Nopphat.Models
+@model List<StudentPunishment>
+@{
+    ViewBag.Title = "Index";
+    var totalMoney = 0.0;
+    var totalPush = 0.0;
+   
+}
+
+<h2>Index</h2>
+@TempData["msg"]     
+<ul>    
+    @foreach (var item in Model)
+    {
+        if (item.PunishmentTypeId == 1)
+        {
+            totalMoney += item.Value;
+        }
+        else
+        {
+            totalPush += item.Value;
+        }
+        <li>@item.RollNumber - @item.PunishmentTypeId - @item.CreatedAt</li>
+    }
+</ul>     
+<p><b> Money: @totalMoney</b></p>
+<p><b> Push: @totalPush</b></p>
+
